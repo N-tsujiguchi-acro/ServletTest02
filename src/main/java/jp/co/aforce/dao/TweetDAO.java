@@ -46,5 +46,22 @@ public class TweetDAO extends DAO {
 		 return succsess > 0 ;
 	}
 	
+	public boolean delete() throws Exception {
+	    Connection con = getConnection();
+
+	    PreparedStatement st = con.prepareStatement(
+    		"DELETE FROM tweets WHERE id = ( SELECT id FROM ( SELECT id FROM tweets ORDER BY posted_at DESC LIMIT 1  ) AS temp);"
+	    );
+	 
+
+	    int rowsDeleted = st.executeUpdate();
+
+	    st.close();
+
+	    return rowsDeleted > 0;
+	}
+
+	
+	
 	
 }

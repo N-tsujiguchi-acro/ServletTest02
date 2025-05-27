@@ -19,6 +19,9 @@
 		<p>
 			<a href="new_tweet.jsp">新規投稿</a>
 		</p>
+		<form action="tweet_detele" method="POST">
+		<input type="submit"  value="削除">
+		</form>
 
 		<%-- ツイート一覧の表示 --%>
 		<ul class="tweet-list">
